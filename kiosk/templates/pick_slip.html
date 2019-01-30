@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table, tr, td, th{
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+
+    td, th{
+        padding: 0.5em;
+    }
+</style>
+<body>
+<h1>{{recipient.get('last_name')}}, {{recipient.get('joint_account_holder', recipient.get('first_name')) }}</h1>
+<h2>{{recipient.get('mailbox')}}{% if letter %} - Check mailbox for letters{% endif %}</h2>
+<table width="100%" id="mainTable">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Checked-in</th>
+            <th>Carrier</th>
+            <th>Tracking</th>
+            <th>Damaged</th>
+            <th>Notes 1</th>
+            <th>Notes 2</th>
+        </tr>
+    </thead>
+    {% for package in packages %}
+    <tr>
+        <td>{% if package.package_type.label %}{{ package.package_type.label }}{% endif %}</td>
+        <td>{{ package.checked_in }}</td>
+        <td>{% if package.carrier_id.name %}{{ package.carrier_id.name }}{% endif %}</td>
+        <td>{{ package.system_tracking_code[-6:] }}</td>
+        <td>{% if package.get('damaged') == 1 %}Y{% endif %}</td>
+        <td>{{ package.get('first_note', '') }}</td>
+        <td>{{ package.get('second_note', '') }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p>{{ now }}</p>
+</body>
+</html>

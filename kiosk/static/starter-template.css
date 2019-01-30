@@ -1,0 +1,36 @@
+[v-cloak] {
+  display: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f7f7f7;
+}
+
+h1{
+    font-size: 4.5em;
+    color: #002147;
+}
+
+.starter-template {
+    padding: 2em;
+    text-align: center;
+}
+
+.studentid {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.alert {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 2.5em;"
+}
+
+.lead {
+    font-size: 2.5em;
+}
